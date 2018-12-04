@@ -14,6 +14,9 @@ import { Subscription } from 'rxjs';
 export class ShellComponent implements OnInit, OnDestroy {
 
   items: MenuItem[];
+  displaySidebar = false;
+  logOutLabel = 'Вийти';
+  editActiveUserLabel = 'Редагувати';
   private subscription: Subscription;
 
   constructor(
@@ -57,4 +60,7 @@ export class ShellComponent implements OnInit, OnDestroy {
   homeButtonClicked() {
     this.router.navigate([this._authService.defaultRoute()]);
   }
+  // editActiveUser(activeUser: User) {
+
+  // }
 }

@@ -10,18 +10,18 @@
   padding: 10px;
   color: #007ad9;
   position: relative;
-  right: 400px; 
+  right: 400px;
   z-index: 1;
 }
 
 :host ::ng-deep .ui-toolbar {
-	position: fixed; 
-	left: 0; 
-	top: 0; 
+	position: fixed;
+	left: 0;
+	top: 0;
 	width: 100%;
 	padding: 10px;
 	z-index: 2;
-} 
+}
 
 :host ::ng-deep .ui-toolbar .ui-button {
 	margin-left: 10px;
@@ -34,13 +34,16 @@
 
 :host ::ng-deep .ui-toolbar .ui-menuitem-text {
 	padding-left: 30px;
-} 
+}
 
 :host ::ng-deep .ui-toolbar .ui-menuitem:nth-child(2) .ui-menuitem-text {
   font-weight: bold;
 }
 
-
+.sidebar-avatar {
+  width: 240px;
+  height: 240px;
+}
 
 
 

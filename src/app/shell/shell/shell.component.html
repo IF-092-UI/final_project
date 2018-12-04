@@ -7,6 +7,7 @@
 
   <div class="ui-toolbar-group-right">
     <i class="fas fa-user user"></i>
+    <button type="text" (click)="displaySidebar = !displaySidebar" pButton label="USER"><i class="fas fa-home home"></i></button>
   </div>
 
   <div class="ui-toolbar-group-right">
@@ -15,5 +16,14 @@
   </div>
 
 </p-toolbar>
+<!-- Sidebar setup -->
+<p-sidebar [(visible)]="displaySidebar" position="right">
+  <div class="student-img">
+      <img src="assets/avatar.png" class="sidebar-avatar">
+  </div>
+  <h1>Name FamilyName PoPerentu</h1>
+  <button type="text" (click)="editActiveUser()" pButton icon="pi pi-pencil" label="{{editActiveUserLabel}}"></button>
+  <button type="text" (click)="LogOut()" pButton icon="pi pi-sign-out" label="{{logOutLabel}}"></button>
+</p-sidebar>
 
 <router-outlet></router-outlet>
