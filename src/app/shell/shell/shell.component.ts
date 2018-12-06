@@ -36,21 +36,10 @@ export class ShellComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscribeToNotifications();
-
-    // this.items = [
-    //   {
-    //     label: 'Струтинська Тетяна Олександрівна (Вчитель)',
-    //     items: [
-
-    //       { label: 'Меню' },
-    //       {
-    //         label: 'Вийти', command: (click) => {
-    //           this.LogOut();
-    //         }, routerLink: ['/login']
-    //       }
-    //     ]
-    //   }
-    // ];
+    this.teacherService.getTeacherBy(this._authService.getCurrentUserId()).subscribe(teacher => {
+      this.activeUser = teacher;
+      this.userFullName = teacher.firstname + " " + teacher.patronymic + " " + teacher.lastname;
+    });
   }
 
   LogOut() {
@@ -70,15 +59,7 @@ export class ShellComponent implements OnInit, OnDestroy {
     this.router.navigate([this._authService.defaultRoute()]);
   }
   editActiveUser() {
-    console.log('User edit btn pressed');
+    console.log('User edit btn pressed'); //TODO-->>>
   }
-  print() {
-    // this._authService.getRole();
-    // this.teacherService.getTeacher('31').subscribe(teacher => (this.activeUser = teacher));
-    this.teacherService.getTeacherBy(this._authService.getCurrentUserId()).subscribe(teacher => (this.activeUser = teacher));
-    console.log(this.activeUser);
-  }
-  // activeUserDetails() {
-  //   this._authService.getToken().
-  // }
+
 }
