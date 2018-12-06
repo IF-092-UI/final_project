@@ -75,7 +75,10 @@ export class ShellComponent implements OnInit, OnDestroy {
   print() {
     // this._authService.getRole();
     // this.teacherService.getTeacher('31').subscribe(teacher => (this.activeUser = teacher));
-    this.teacherService.getTeacherBy('31').subscribe(teacher => (this.activeUser = teacher));
+    this.teacherService.getTeacherBy(this._authService.getCurrentUserId()).subscribe(teacher => (this.activeUser = teacher));
     console.log(this.activeUser);
   }
+  // activeUserDetails() {
+  //   this._authService.getToken().
+  // }
 }

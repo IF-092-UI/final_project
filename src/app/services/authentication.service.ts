@@ -51,15 +51,7 @@ export class AuthenticationService {
   }
 
   getRole(): string {
-    const token = localStorage.getItem('authToken');
-    if (!token) {
-      return null;
-    }
-    const jwtHelper = new JwtHelperService();
-    const decodedToken = jwtHelper.decodeToken(token);
-    console.log('decoded Token', decodedToken);
-    console.log(token);
-    return decodedToken.Roles.authority;
+    return this.getDecodedToken().Roles.authority;
   }
 
   getRoleLocalizedName (): string {
@@ -114,5 +106,20 @@ export class AuthenticationService {
         (err) => {
           console.warn('failed to refresh token with error: ' + err);
         });
+  }
+
+  getDecodedToken(): any {
+    const token = this.getToken();
+    if (!token) {
+      return null;
+    }
+    const jwtHelper = new JwtHelperService();
+    const decodedToken = jwtHelper.decodeToken(token);
+    console.log('decoded Token', decodedToken);
+    console.log(token);
+    return decodedToken;
+  }
+  getCurrentUserId(): string {
+    return this.getDecodedToken().jti;
   }
 }
