@@ -43,6 +43,7 @@ export class AuthenticationService {
   logOut() {
     this.tokenRefreshTimestamp = null;
     localStorage.removeItem('authToken');
+    this.router.navigate(['/login']);
   }
 
   loggedIn() {
@@ -56,7 +57,20 @@ export class AuthenticationService {
     }
     const jwtHelper = new JwtHelperService();
     const decodedToken = jwtHelper.decodeToken(token);
+    console.log('decoded Token', decodedToken);
+    console.log(token);
     return decodedToken.Roles.authority;
+  }
+
+  getRoleLocalizedName (): string {
+    switch (this.getRole()) {
+      case 'ROLE_ADMIN':
+        return 'Адміністратор';
+      case 'ROLE_TEACHER':
+        return 'Вчитель';
+      case 'ROLE_USER':
+        return 'Користувач';
+    }
   }
 
   defaultRoute() {

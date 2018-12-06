@@ -3,7 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Iteachers } from '../models/teachers';
 import { Observable, BehaviorSubject } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class TeachersService {
   constructor(private http: HttpClient) {}
   private calendarSource = new BehaviorSubject<object>({
@@ -42,6 +44,20 @@ export class TeachersService {
   public putTeacher(teacher: Iteachers): Observable<Iteachers> {
     return this.http.put<Iteachers>(`/admin/teachers/${teacher.id}`, teacher)
     .map((response: any) => {
+      return response.data;
+    });
+  }
+  // public getTeacher(byId: string): Observable<Iteachers> {
+  //   return this.http.get<Iteachers[]>(`teachers/${byId}`)
+  //     .map((response: any) => {
+  //       return response.data;
+  //     });
+  // }
+  /**
+   * getTeacherBy
+   */
+  public getTeacherBy(id: string): Observable<Iteachers> {
+    return this.http.get<Iteachers>(`teachers/${id}`).map((response: any) => {
       return response.data;
     });
   }
