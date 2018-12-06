@@ -38,7 +38,7 @@ export class ShellComponent implements OnInit, OnDestroy {
     this.subscribeToNotifications();
     this.teacherService.getTeacherBy(this._authService.getCurrentUserId()).subscribe(teacher => {
       this.activeUser = teacher;
-      this.userFullName = teacher.firstname + " " + teacher.patronymic + " " + teacher.lastname;
+      this.userFullName = teacher.firstname + ' ' + teacher.patronymic + ' ' + teacher.lastname;
     });
   }
 
@@ -59,7 +59,7 @@ export class ShellComponent implements OnInit, OnDestroy {
     this.router.navigate([this._authService.defaultRoute()]);
   }
   editActiveUser() {
-    console.log('User edit btn pressed'); //TODO-->>>
+    console.log('User edit btn pressed'); // TODO-->>>
   }
 
 }
